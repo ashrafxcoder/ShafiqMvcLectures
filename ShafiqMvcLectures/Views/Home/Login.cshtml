@@ -1,0 +1,23 @@
+﻿
+@{
+    ViewBag.Title = "Login";
+}
+
+<h2>Login</h2>
+
+
+
+@using (Html.BeginForm())
+{
+    <text>UserName:</text>    <input type="text" name="username"  />
+    <text>UserName:</text>    <input type="password" name="password"  />
+
+
+   
+
+
+    @Html.CheckBox("rememberMe")
+
+    @*<input type="checkbox" name="rememberMe"/>*@
+    <input type="submit" value="Login" />
+}
