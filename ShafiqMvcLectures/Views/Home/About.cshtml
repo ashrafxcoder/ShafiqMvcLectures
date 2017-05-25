@@ -1,7 +1,18 @@
-﻿@{
+﻿@model ShafiqMvcLectures.Controllers.AboutVm
+@{
     ViewBag.Title = "About";
 }
 <h2>@ViewBag.Title.</h2>
 <h3>@ViewBag.Message</h3>
 
 <p>Use this area to provide additional information.</p>
+
+
+
+
+@*@Html.Partial("WeekDays", Model.WeekDays)
+@Html.Partial("Ages", Model.Ages)*@
+
+
+@Html.Action("WeekDays")
+@Html.Action("Ages")

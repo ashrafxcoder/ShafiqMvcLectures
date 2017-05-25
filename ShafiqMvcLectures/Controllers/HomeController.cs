@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -19,9 +20,29 @@ namespace ShafiqMvcLectures.Controllers
         {
             ViewBag.Message = "Your application description page.";
 
-            return View();
+
+
+            var vm = new AboutVm()
+            {
+                WeekDays = CultureInfo.CurrentCulture.DateTimeFormat.DayNames.ToList(),
+                Ages = Enumerable.Range(20, 10).ToList()
+            };
+            return View(vm);
         }
 
+        [ChildActionOnly]
+        public PartialViewResult WeekDays()
+        {
+            var model = CultureInfo.CurrentCulture.DateTimeFormat.DayNames.ToList();
+            return PartialView("WeekDays", model);
+        }
+
+        [ChildActionOnly]
+        public PartialViewResult Ages()
+        {
+            var model = Enumerable.Range(20, 10).ToList();
+            return PartialView("Ages", model);
+        }
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";
@@ -60,5 +81,13 @@ namespace ShafiqMvcLectures.Controllers
         }
 
 
+    }
+
+
+
+    public class AboutVm
+    {
+        public List<string> WeekDays { get; set; }
+        public List<int> Ages { get; set; }
     }
 }
